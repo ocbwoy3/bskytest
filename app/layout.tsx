@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   description: "test",
 };
 
-import { AppMenubar } from "@/components/app/Menubar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app/Sidebar";
 import { InitalAppLoader } from "@/components/app/InitalApp";

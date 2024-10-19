@@ -1,6 +1,5 @@
 "use client";
 
-import { manager } from "@/lib/api";
 import { useEffect } from "react";
 
 export function InitalAppLoader({

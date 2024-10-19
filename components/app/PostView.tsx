@@ -1,7 +1,7 @@
 "use client";
 
 import { agent } from "@/lib/api";
-import { FeedViewPost, GeneratorView } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
+import { FeedViewPost } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";

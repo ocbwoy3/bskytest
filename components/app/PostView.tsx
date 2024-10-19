@@ -39,7 +39,7 @@ function ThumbnailView({
 				isVideo ? (
 					<>
 						<Button onClick={()=>{
-							window.navigator.clipboard.writeText(isVideo as string)
+							window?.navigator?.clipboard?.writeText(isVideo as string)
 						}}>Copy m3u8 playlist url</Button>
 						<div className="w-full h-[5px]"></div>
 					</>
@@ -79,13 +79,13 @@ export function PostView({
 			debounce = true;
 
 			agent.app.bsky.feed.getFeed({
-				feed: (window as any).getFeedURI(),
+				feed: (window as any)?.getFeedURI(),
 				limit: 100,
 			}).then((p)=>{
 				setPosts(p.data.feed)
 				debounce = false;
 				agent.app.bsky.feed.getFeedGenerator({
-					feed: (window as any).getFeedURI()
+					feed: (window as any)?.getFeedURI()
 				}).then((g)=>{
 					setFeedName(`${g.data.view.displayName} by @${g.data.view.creator.handle} - ${g.data.view.creator.did}`)
 				})

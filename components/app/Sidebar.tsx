@@ -44,6 +44,7 @@ const feedListTest = [
 	"at://did:plc:vwzwgnygau7ed7b7wt5ux7y2/app.bsky.feed.generator/aaajwc4qiqvre",
 	"at://did:plc:jdkvwye2lf4mingzk7qdebzc/app.bsky.feed.generator/art-nsfw",
 	"at://did:plc:jdkvwye2lf4mingzk7qdebzc/app.bsky.feed.generator/furry-fursuit"
+
 ]
 
 export function AppSidebar({

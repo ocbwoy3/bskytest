@@ -5,6 +5,7 @@ import { FeedViewPost } from "@atproto/api/dist/client/types/app/bsky/feed/defs"
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
+import { CopyIcon } from "@radix-ui/react-icons";
 
 type PostEmbedImage = {alt: string, fullsize: string, thumb: string};
 
@@ -31,13 +32,16 @@ function ThumbnailView({
 		<div>
 			{ postText.length !== 0 ? <div className="w-full h-[3px]"></div> : "" }
 			{
-				(labels.length !== 0 && hasPorn) ? (
-					<Button onClick={()=>{setShowImage(!showImage)}}>{showImage ? "Hide" : "Show"} images</Button>
+				(labels.length !== 0) ? (
+					<Button onClick={()=>{setShowImage(!showImage)}}>{showImage ? "Hide" : "Show"} { isVideo ? "video" : "image"}{ imgs.length === 1 ? "s" : ""}</Button>
 				) : (<></>)
 			}
+			{ showImage ? (<div className="w-full h-[5px]"></div>) : (<></>) }
 			{
-				isVideo ? (
+				(showImage && isVideo) ? (
 					<>
+						<iframe src={"https://www.hlsplayer.org/play?url="+encodeURI(isVideo as string)} key="videoiframe" className="rounded-md"/>
+						<div className="w-full h-[5px]"></div>
 						<Button onClick={()=>{
 							window?.navigator?.clipboard?.writeText(isVideo as string)
 						}}>Copy m3u8 playlist url</Button>
@@ -117,6 +121,12 @@ export function PostView({
 								<strong>{post.post.author.displayName || post.post.author.did}</strong>
 								<div className="w-2 h-full"></div>
 								<span className="text-ctp-subtext0">{"@"+post.post.author.handle}</span>
+								<div className="w-2 h-full"></div>
+								<button onClick={()=>{
+									window?.navigator?.clipboard?.writeText(`https://bsky.app/profile/${post.post.author.did}/post/${post.post.uri.match(/([a-zA-Z0-9]+)$/)?.[1]}`)
+								}}>
+									<CopyIcon/>
+								</button>
 							</span>
 							<div className="flex items-center">
 								<div>
